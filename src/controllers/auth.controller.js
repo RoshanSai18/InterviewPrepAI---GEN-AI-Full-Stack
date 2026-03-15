@@ -101,12 +101,12 @@ async function loginUserController (req, res){
 
 }
 
+
 /**
  * @name logoutUserController
  * @description for logging out - clear cookies and add token in the black list
  * @access Public
  */
-
 async function logoutUserController (req, res){
     const token = req.cookies.token
 
@@ -121,8 +121,30 @@ async function logoutUserController (req, res){
     })
 }
 
+/**
+ * @name getMeUserController
+ * @description getting the details of the logged in user from the token after using a middle ware of jwt.verify() to parse the token and get the decoded user.
+ * @access Private
+ */
+async function getMeUserController (req, res) {
+    const user = await userModel.findById(req.user.id)
+
+
+    res.status(200).json({
+        message: "User details fetched successully.",
+        user: {
+            id: user._id,
+            username: user.username,
+            password: user.password
+        }
+    })
+}
+
+
+
 module.exports = {
     registerUserController,
     loginUserController,
-    logoutUserController
+    logoutUserController,
+    getMeUserController
 }
