@@ -1,0 +1,18 @@
+.env
+node_modules
+
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE settings (optional - only if you don't want to share)
+.vscode/
+.idea/
+
+# Dependencies lock file (optional - keep if working in a team)
+# package-lock.json
